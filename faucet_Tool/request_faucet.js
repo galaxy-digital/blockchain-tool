@@ -88,7 +88,7 @@ const sendTransactions = async (start, end) => {
 };
 
 const start = () => {
-    sendTransactions(0, 10);
+    sendTransactions(1001, 2000);
 };
 
 start();

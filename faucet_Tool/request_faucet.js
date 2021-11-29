@@ -69,26 +69,26 @@ const sendTransactions = async (start, end) => {
         console.log("collect Error", err);
     }
 
-    await delay(20000);
-    console.log("move start");
-    try {
-        for (var i = start; i < end; i++) promise = collectFTM(i);
+    // await delay(20000);
+    // console.log("move start");
+    // try {
+    //     for (var i = start; i < end; i++) promise = collectFTM(i);
 
-        await Promise.all([promise]).catch((err) => {
-            console.log(err);
-        });
-    } catch (err) {
-        console.log("collect Error", err);
-    }
+    //     await Promise.all([promise]).catch((err) => {
+    //         console.log(err);
+    //     });
+    // } catch (err) {
+    //     console.log("collect Error", err);
+    // }
 
-    var endTime = new Date().getTime();
-    var period = (endTime - startTime) / 1000;
+    // var endTime = new Date().getTime();
+    // var period = (endTime - startTime) / 1000;
 
-    console.log(" total Time : ", period);
+    // console.log(" total Time : ", period);
 };
 
 const start = () => {
-    sendTransactions(500, 1000);
+    sendTransactions(0, 10);
 };
 
 start();

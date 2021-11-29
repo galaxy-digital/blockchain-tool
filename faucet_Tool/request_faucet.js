@@ -48,12 +48,18 @@ const sendTransactions = async (start, end) => {
     var promise;
     var requestNum = 0;
     var startTime = new Date().getTime();
+    var count = 0;
     try {
         for (var i = start; i <= end; i++) {
+            if (count == 49) {
+                await delay("600000");
+                count = 0;
+            }
             promise = requestFTM(i);
             await delay(5000);
 
-            // i = i % end;
+            count++;
+            i = i % end;
             requestNum++;
             var middle = new Date().getTime();
             var period = (middle - startTime) / 1000;
@@ -69,7 +75,7 @@ const sendTransactions = async (start, end) => {
         console.log("collect Error", err);
     }
 
-    // await delay(20000);
+    // await delay(10000);
     // console.log("move start");
     // try {
     //     for (var i = start; i < end; i++) promise = collectFTM(i);
@@ -88,7 +94,7 @@ const sendTransactions = async (start, end) => {
 };
 
 const start = () => {
-    sendTransactions(1001, 2000);
+    sendTransactions(0, 9999);
 };
 
 start();

@@ -53,7 +53,7 @@ const sendTransactions = async (start, end) => {
     try {
         for (var i = start; i <= end; i++) {
             if (count == 49) {
-                await delay("600000");
+                await delay("300000");
                 count = 0;
             }
             promise = requestFTM(i);

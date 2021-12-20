@@ -47,35 +47,34 @@ const requestFTM = (index) => {
 
 const sendTransactions = async (start, end) => {
     var promise;
-    // var requestNum = 0;
+    var requestNum = 0;
     var startTime = new Date().getTime();
-    // var count = 0;
-    // try {
-    //     for (var i = start; i <= end; i++) {
-    //         if (count == 49) {
-    //             await delay("600000");
-    //             count = 0;
-    //         }
-    //         promise = requestFTM(i);
-    //         await delay(5000);
+    var count = 0;
+    try {
+        for (var i = start; i <= end; i++) {
+            if (count == 49) {
+                await delay("600000");
+                count = 0;
+            }
+            promise = requestFTM(i);
+            await delay(5000);
 
-    //         count++;
-    //         i = i % end;
-    //         requestNum++;
-    //         var middle = new Date().getTime();
-    //         var period = (middle - startTime) / 1000;
-    //         console.log(
-    //             "requestAPIRequest: ",
-    //             requestNum,
-    //             "   total Time: ",
-    //             period
-    //         );
-    //         startTime = new Date().getTime();
-    //     }
-    // } catch (err) {
-    //     // console.log("collect Error", err);
-    //     console.log("collection Error");
-    // }
+            count++;
+            i = i % end;
+            requestNum++;
+            var middle = new Date().getTime();
+            var period = (middle - startTime) / 1000;
+            console.log(
+                "requestAPIRequest: ",
+                requestNum,
+                "   total Time: ",
+                period
+            );
+            startTime = new Date().getTime();
+        }
+    } catch (err) {
+        console.log("collect Error", err);
+    }
 
     // await delay(10000);
     // console.log("move start");
@@ -93,17 +92,16 @@ const sendTransactions = async (start, end) => {
     //     console.log("collect Error", err);
     // }
 
-    try {
-        for (var i = start; i < end; i++) {
-            promise = await collectFTM(i);
-            Promise.all(promise).catch((err) => {
-                console.log("promise error");
-            });
-            i = i % end;
-        }
-    } catch (err) {
-        console.log("collect Error", err);
-    }
+    // try {
+    //     for (var i = start; i < end; i++) {
+    //         promise = await collectFTM(i);
+    //         await Promise.all(promise).catch((err) => {
+    //             console.log("transaction error");
+    //         });
+    //     }
+    // } catch (err) {
+    //     console.log("collect Error", err);
+    // }
 
     var endTime = new Date().getTime();
     var period = (endTime - startTime) / 1000;

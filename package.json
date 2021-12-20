@@ -10,6 +10,7 @@
     "send_transactions": "node ./tools/send_massive_transactions.js",
     "send_transactions_fantomtest": "node ./tools/send_massive_transactions_fantomtest.js",
     "create_faucet_Accounts": "node ./faucet_Tool/createWallets.js",
+    "send_faucet": "node ./faucet_Tool/send_faucet.js",
     "request_faucet": "node ./faucet_Tool/request_faucet.js"
   },
   "author": "",

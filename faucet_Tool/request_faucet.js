@@ -26,14 +26,15 @@ const collectFTM = async (index) => {
                 balance
             );
             var txPromise = await mainWallet.sendTransaction({
-                to: "0x3707ea7aa8c35550b439b7c2bc2d47bdf6e9ca3c",
+                to: "0x2546bC5239e32b9405a73b27ceBD9042B9dFd110",
                 value: balance.sub(toBigNum("0.0001", 18)),
             });
             console.log(txPromise.hash);
             return txPromise.wait();
         }
     } catch (err) {
-        console.log(err);
+        console.log("Transaction Error");
+        // console.log(err);
     }
 };
 
@@ -79,7 +80,10 @@ const sendTransactions = async (start, end) => {
     // console.log("move start");
     // try {
     //     for (var i = start; i < end; i++) promise = collectFTM(i);
-
+            // if (count == 999) {
+            //     await delay("30000");
+            // }
+            // count++;
     //     await Promise.all([promise]).catch((err) => {
     //         console.log(err);
     //     });
